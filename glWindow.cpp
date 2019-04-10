@@ -1,8 +1,8 @@
 // --- make a window ---
 
-#include <GL/glut.h> 						// gl Utility toolbox
+#include <GL/glut.h 				// gl Utility toolbox
 
 int main(int argc, char **argv) {
-	glutInit(&argc, argv); 					// Initialize gl utilities
+	glutInit(&argc, argv); 			// Initialize gl utilities
 	glutCreateWindow("bananas");         	// Make window
-	glutMainLoop();}                   		// Run loop
+	glutMainLoop();}                   	// Run loop
