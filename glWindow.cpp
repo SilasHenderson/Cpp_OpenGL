@@ -1,3 +1,5 @@
+// --- make a window ---
+
 #include <GL/glut.h> 						// gl Utility toolbox
 
 int main(int argc, char **argv) {
