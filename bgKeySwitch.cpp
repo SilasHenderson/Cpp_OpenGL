@@ -1,5 +1,6 @@
 // cppGL color switch {Silas Henderson 2019} 
 // -- up/down key change window color
+
 #include <GL/glut.h> 										
 float red = .1; 		
 
