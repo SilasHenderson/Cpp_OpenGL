@@ -6,10 +6,8 @@ float red = .1;
 
 void keyboard(int key, int x, int y) {   					// Keyboard        
 	switch (key) {
-		case GLUT_KEY_UP:    								// -- up arrow
-			red = .5; glutPostRedisplay(); break;
-		case GLUT_KEY_DOWN:                             	// -- down arrow
-			red = .1; glutPostRedisplay(); break;}}
+		case GLUT_KEY_UP:    red = .5; glutPostRedisplay(); break;
+		case GLUT_KEY_DOWN:  red = .1; glutPostRedisplay(); break;}}
 
 void display() { 											// Display
 	glClearColor(red, .1, .1, 1);							// -- color
