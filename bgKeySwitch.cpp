@@ -1,4 +1,4 @@
-// cppGL color switch {Silas Henderson 2019}
+// cppGL color switch {Silas Henderson 2019} 
 // -- press up and down key to change window color
 #include <GL/glut.h> 										// gl Utility toolbox
 
