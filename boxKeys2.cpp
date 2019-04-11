@@ -15,13 +15,13 @@ void keyboard(int key, int x, int y) {
 		case GLUT_KEY_LEFT:  	bx = bx - .1; 	break;
 		case GLUT_KEY_RIGHT: 	bx = bx + .1; 	break;
 		case GLUT_KEY_DOWN: 	by = by - .1; 	break;
-		case GLUT_KEY_UP:		by = by + .1; 	break;	}
+		case GLUT_KEY_UP:	by = by + .1; 	break;}
 	refresh();}
 
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA);
-	glutCreateWindow("tacotime");
+	glutCreateWindow("its_rectangle_time");
 	glutDisplayFunc(refresh);
 	glutSpecialFunc(keyboard);
-	glutMainLoop(); }
+	glutMainLoop();}
