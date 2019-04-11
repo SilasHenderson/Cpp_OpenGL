@@ -29,7 +29,6 @@ void update() {
     glutSwapBuffers();                                             
     if (programOn == 0) { glutDestroyWindow(1);  return;}}    
 
-// ------------------------------ Keyboard ----------------------------
 void keyDown(int key, int x, int y) {                                     
     switch (key) {  case GLUT_KEY_LEFT:    leftKey = 1; break;
                     case GLUT_KEY_RIGHT:  rightKey = 1; break; }}
@@ -38,7 +37,6 @@ void keyUp(  int key, int x, int y) {
     switch(key) {   case GLUT_KEY_LEFT:    leftKey = 0; break; 
                     case GLUT_KEY_RIGHT:  rightKey = 0; break; }}
 
-// --------------------------- Timer, Main ----------------------------
 void timer(int value) {update(); glutTimerFunc(10, timer, 0);}            
 
 int main(int argc, char** argv) {                                         
