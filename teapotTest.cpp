@@ -1,5 +1,5 @@
 // Teapot Test {Silas Henderson 2019}
-// -- press up, down, left, right arrows to move
+// -- press up, down, left, right arrows to move 
 
 #include <GL/freeglut.h>
 #include <math.h>
