@@ -48,8 +48,8 @@ void ang2Node() {
  	node[2][2] = 0;}
 
 void addPt(){ pts[0][ptNum] = node[0][2];
-	          pts[1][ptNum] = node[1][2];
-	          pts[2][ptNum] = node[2][2]; 	ptNum = ptNum + 1;}
+	      pts[1][ptNum] = node[1][2];
+	      pts[2][ptNum] = node[2][2]; 	ptNum = ptNum + 1;}
 
 void drawArm() {
 	glBegin(GL_LINE_STRIP);
@@ -76,19 +76,19 @@ void circlePts() {
 void arrowDown(int key, int x, int y) { 
 	switch (key) {
 		case GLUT_KEY_UP:   	upKey    = 1; 	break;
-		case GLUT_KEY_DOWN:		downKey  = 1;	break; 
+		case GLUT_KEY_DOWN:	downKey  = 1;	break; 
 		case GLUT_KEY_LEFT: 	leftKey  = 1; 	break;
 		case GLUT_KEY_RIGHT: 	rightKey = 1;	break;}}
 
 void arrowUp(  int key, int x, int y) {
 	switch (key) {
 		case GLUT_KEY_UP:   	upKey    = 0; 	break;
-		case GLUT_KEY_DOWN:		downKey  = 0; 	break;
+		case GLUT_KEY_DOWN:	downKey  = 0; 	break;
 		case GLUT_KEY_LEFT: 	leftKey  = 0; 	break;
 		case GLUT_KEY_RIGHT: 	rightKey = 0; 	break;}}
 
 void keyDown( unsigned char key, int x, int y) {
-	if (key == 'd') {dKey = 1;}		if (key == 'f') {fKey = 1;}}
+	if (key == 'd') {dKey = 1;}	if (key == 'f') {fKey = 1;}}
 
 void keyUp( unsigned char key, int x, int y) {
 	if (key == 'd') {dKey = 0;}  	if (key == 'f') {fKey = 0;}}
@@ -101,7 +101,6 @@ void loop() {
 
 	glClear(GL_COLOR_BUFFER_BIT);
 	if (program == 0) {
-		
 		if (leftKey  == 1) {ang[0] = ang[0] - dAng; } 		
 		if (rightKey == 1) {ang[0] = ang[0] + dAng; }
 		if (upKey    == 1) {ang[1] = ang[1] + dAng; }
@@ -123,8 +122,8 @@ int main(int argc, char** argv) {
 
 	// Init
 	glutInit(&argc, argv);                                                
-    glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGBA);
-    glutCreateWindow("crowTRobot");
+	glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGBA);
+    	glutCreateWindow("crowTRobot");
 
  	// Extra
  	node[0][0] = 0; 	node[1][0] = 0; 	node[2][0] = 0;
@@ -132,10 +131,10 @@ int main(int argc, char** argv) {
  	glPointSize(ptSize);
 
  	// Functions
-    glutDisplayFunc(loop);
-    glutTimerFunc(40, timer, 0);
-    glutKeyboardFunc(keyDown);
-    glutKeyboardUpFunc(keyUp);
-    glutSpecialFunc(arrowDown);
-    glutSpecialUpFunc(arrowUp);
-    glutMainLoop();}
+    	glutDisplayFunc(loop);
+    	glutTimerFunc(40, timer, 0);
+    	glutKeyboardFunc(keyDown);
+    	glutKeyboardUpFunc(keyUp);
+    	glutSpecialFunc(arrowDown);
+    	glutSpecialUpFunc(arrowUp);
+    	glutMainLoop();}
