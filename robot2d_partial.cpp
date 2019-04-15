@@ -12,7 +12,7 @@ int shape = 0;
 int drawingOn = 1;
 double drawing[2][2000];
 
-// ---------------------- pause function --------------------
+// ---------------------------- pause function ----------------------
 void pause(double DT) {
 	int pauseOn = 1;
 	auto     t0 = std::chrono::system_clock::now();
@@ -24,27 +24,25 @@ void pause(double DT) {
 // ------------------------- Math -----------------------------------
 void drawPoint(double x, double y) {
 
-    double ang0 = 2*atan((2*L1*y - 
+	double ang0 = 2*atan((2*L1*y - 
     	sqrt( -   L1*L1*L1*L1 + 2*L1*L1*L2*L2 -   L2*L2*L2*L2 
-          	  + 2*L1*L1* x* x + 2*L1*L1* y* y + 2*L2*L2* x* x 
-           	  + 2*L2*L2* y* y -    x* x* x* x - 2* x* x* y* y - y* y* y* y))
-        	    /(L1*L1 + 2*L1*x - L2*L2 + x*x + y*y));
+              + 2*L1*L1* x* x + 2*L1*L1* y* y + 2*L2*L2* x* x 
+              + 2*L2*L2* y* y -    x* x* x* x - 2* x* x* y* y - y* y* y* y))
+        /(L1*L1 + 2*L1*x - L2*L2 + x*x + y*y));
 
-    double ang1 = 2*atan((2*L2*y + 
-       	sqrt((- L1*L1 + 2*L1*L2 - L2*L2 + x*x + y*y)
-           	*(  L1*L1 + 2*L1*L2 + L2*L2 - x*x - y*y)))     
-           	/(- L1*L1 + 2*L2*x  + L2*L2 + x*x + y*y));
+    	double ang1 = 2*atan((2*L2*y + 
+       		  sqrt((- L1*L1 + 2*L1*L2 - L2*L2 + x*x + y*y)
+          	      *(  L1*L1 + 2*L1*L2 + L2*L2 - x*x - y*y)))     
+           	      /(- L1*L1 + 2*L2*x  + L2*L2 + x*x + y*y));
 
     double n0x = 0;	double n1x = L1*cos(ang0); double n2x = n1x + L2*cos(ang1);
     double n0y = 0;	double n1y = L1*sin(ang0); double n2y = n1y + L2*sin(ang1);
     	   	
-    glBegin(GL_LINE_STRIP); glVertex2d(n0x, n0y);
-    						glVertex2d(n1x, n1y);
-    						glVertex2d(n2x, n2y);    		glEnd();
-
-   	if (drawingOn == 1) {
-
-   		drawing[0][ptNum] = n2x;
+    glBegin(GL_LINE_STRIP); 	glVertex2d(n0x, n0y);
+    			 	glVertex2d(n1x, n1y);
+    				glVertex2d(n2x, n2y);    		glEnd();
+   if (drawingOn == 1) {
+   	drawing[0][ptNum] = n2x;
     	drawing[1][ptNum] = n2y;   	ptNum = ptNum + 1; 
     	
     	glBegin(GL_POINTS);
@@ -94,9 +92,9 @@ int main(int argc, char** argv) {
 
 	// Init
 	glutInit(&argc, argv);                                         
-    glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGBA);
-    glutCreateWindow("crowTRobot");
+   	glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGBA);
+	glutCreateWindow("crowTRobot");
 
  	// Functions
-    glutDisplayFunc(drawLoop);
-    glutMainLoop();}
+    	glutDisplayFunc(drawLoop);
+    	glutMainLoop();}
