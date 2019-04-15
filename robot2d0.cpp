@@ -1,6 +1,5 @@
 // drawing robot-2d opengl {Silas Henderson}
 
-#include <iostream>
 #include <chrono>
 #include <GL/glut.h>
 #include <math.h>
