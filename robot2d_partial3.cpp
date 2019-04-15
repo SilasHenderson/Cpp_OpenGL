@@ -29,15 +29,15 @@ void pause(double DT) {
 void angNodeSolve(double x, double y) { 			
 
     ang0 = 2*atan((2*L1*y - 			 												
-    	sqrt( -   L1*L1*L1*L1 + 2*L1*L1*L2*L2 -   L2*L2*L2*L2 
-          	  + 2*L1*L1* x* x + 2*L1*L1* y* y + 2*L2*L2* x* x 
-           	  + 2*L2*L2* y* y -    x* x* x* x - 2* x* x* y* y - y* y* y* y))
-        	    /(L1*L1 + 2*L1*x - L2*L2 + x*x + y*y));
+    	sqrt( 	-   L1*L1*L1*L1 + 2*L1*L1*L2*L2 -   L2*L2*L2*L2 
+          	+ 2*L1*L1* x* x + 2*L1*L1* y* y + 2*L2*L2* x* x 
+           	+ 2*L2*L2* y* y -    x* x* x* x - 2* x* x* y* y - y* y* y* y))
+        	  /(L1*L1 + 2*L1*x - L2*L2 + x*x + y*y));
 
     ang1 = 2*atan((2*L2*y +  																	
-       	sqrt((- L1*L1 + 2*L1*L2 - L2*L2 + x*x + y*y)
-           	*(  L1*L1 + 2*L1*L2 + L2*L2 - x*x - y*y)))     
-           	/(- L1*L1 + 2*L2*x  + L2*L2 + x*x + y*y));
+       	sqrt(( - L1*L1 + 2*L1*L2 - L2*L2 + x*x + y*y)
+             *(  L1*L1 + 2*L1*L2 + L2*L2 - x*x - y*y)))     
+             /(- L1*L1 + 2*L2*x  + L2*L2 + x*x + y*y));
  
     n1x = L1*cos(ang0); 	n2x = n1x + L2*cos(ang1); 								
     n1y = L1*sin(ang0); 	n2y = n1y + L2*sin(ang1);}
@@ -56,7 +56,7 @@ void targetGen(int shape, double radius, double numPts, double cx, double cy) {
 			             	target[1][i] = cy + radius*cos(2*di)*sin(di);}
 		
 		if (shape == 2) {	target[0][i] =  cx + (di/6.28)*radius*cos(3*di);
-							target[1][i] =  cy + (di/6.28)*radius*sin(3*di);}}}
+					target[1][i] =  cy + (di/6.28)*radius*sin(3*di);}}}
 
 // ----------------------------- Short Functions -----------------------
 void pathGen() { 										
@@ -64,34 +64,31 @@ void pathGen() {
 		path[0][i] = (target[0][i] - n2x)*double(i)/pathPtCount + n2x;
 		path[1][i] = (target[1][i] - n2y)*double(i)/pathPtCount + n2y;}}
 
-void drawArm() {    	   	 											
-    glBegin(GL_LINE_STRIP); glVertex2d(n0x, n0y);
-    						glVertex2d(n1x, n1y);
+void drawArm() { glBegin(GL_LINE_STRIP); 	glVertex2d(n0x, n0y);
+    				  	 	glVertex2d(n1x, n1y);
     						glVertex2d(n2x, n2y);   glEnd();}
 void drawDrawing() { 																
-   	glBegin(GL_POINTS);
-    for (int i = 0; i < drawingPtCount; i++) {
-    	glVertex2d(drawing[0][i], drawing[1][i]);}; glEnd();}
+	glBegin(GL_POINTS);
+   	for (int i = 0; i < drawingPtCount; i++) {
+    		glVertex2d(drawing[0][i], drawing[1][i]);}; glEnd();}
 
 void addPt() {	drawing[0][drawingPtCount] = n2x;  		
-				drawing[1][drawingPtCount] = n2y;	
-				drawingPtCount = drawingPtCount + 1;}   
+		drawing[1][drawingPtCount] = n2y;	
+		drawingPtCount++;}   
 
 void drawTarget() {		
 	for (int i = 0; i < targetPtCount; i++) {  					
 		angNodeSolve(target[0][i],target[1][i]);	    
-		
-		addPt();	drawArm();	drawDrawing();	pause(.01);}}      
+		addPt();		drawArm();	
+		drawDrawing();		pause(.01);}}      
 
 void moveArm() {
 	for (int i = 0; i < pathPtCount; i++){
 		angNodeSolve(path[0][i], path[1][i]);
-
 		drawArm(); drawDrawing(); pause(.01);}}
 
 // ---------------------- Draw The Shapes Function ------------------
 void loop() {
-
 	angNodeSolve(.1, .1);
 	
 	targetGen(0, .3, 100, -.5, -.5); pathGen();	moveArm(); drawTarget();
@@ -102,11 +99,9 @@ void loop() {
 //  --------------------------- init/main -----------------------------
 int main(int argc, char** argv) {  
 
-	// Init
 	glutInit(&argc, argv);                                         
-    glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGBA);
-    glutCreateWindow("crowTRobot");
+    	glutInitDisplayMode(GLUT_DOUBLE|GLUT_RGBA);
+    	glutCreateWindow("crowTRobot");
 
- 	// Functions
-    glutDisplayFunc(loop);
-    glutMainLoop();}
+    	glutDisplayFunc(loop);
+    	glutMainLoop();}
